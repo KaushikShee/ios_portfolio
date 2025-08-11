@@ -1013,12 +1013,23 @@ section {
     .iphone {
         width: 160px;
         height: 320px;
+        border-radius: 25px; /* Proportional to desktop 45px */
+        padding: 4px; /* Proportional to desktop 8px */
     }
 
     .dynamic-island {
         width: 80px;
         height: 25px;
         top: 12px;
+        border-radius: 12px; /* Proportional to desktop 20px */
+    }
+
+    .screen {
+        border-radius: 21px; /* Proportional to desktop 37px */
+    }
+
+    .screen::before {
+        border-radius: 21px; /* Match screen border-radius */
     }
 
     .camera-dot {
