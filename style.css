@@ -5,6 +5,28 @@
     box-sizing: border-box;
 }
 
+/* Remove default focus outlines */
+*:focus,
+*:focus-visible,
+*:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+a:focus,
+a:focus-visible,
+a:active,
+button:focus,
+button:focus-visible,
+button:active,
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 :root {
     /* Light Theme Colors */
     --primary-color: #007AFF;
