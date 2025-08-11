@@ -8,7 +8,8 @@ const currentTheme = localStorage.getItem('theme') || 'light';
 body.setAttribute('data-theme', currentTheme);
 updateThemeIcon(currentTheme);
 
-themeToggle.addEventListener('click', () => {
+// Theme toggle function
+function toggleTheme() {
     const currentTheme = body.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
@@ -21,6 +22,17 @@ themeToggle.addEventListener('click', () => {
     setTimeout(() => {
         themeToggle.style.transform = 'scale(1)';
     }, 150);
+}
+
+// Mouse click event
+themeToggle.addEventListener('click', toggleTheme);
+
+// Keyboard support for theme toggle
+themeToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleTheme();
+    }
 });
 
 function updateThemeIcon(theme) {
@@ -420,9 +432,118 @@ function preloadImages() {
     });
 }
 
+// Keyboard Navigation Support
+function initKeyboardNavigation() {
+    // Add keyboard support for navigation links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                link.click();
+            }
+        });
+    });
+
+    // Add keyboard support for buttons
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                button.click();
+            }
+        });
+    });
+
+    // Add keyboard support for project cards
+    document.querySelectorAll('.project-link').forEach(link => {
+        link.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                link.click();
+            }
+        });
+    });
+
+    // Add keyboard support for non-clickable project cards
+    document.querySelectorAll('.project-card:not(.project-link .project-card)').forEach(card => {
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                // Add visual feedback for keyboard interaction
+                card.style.transform = 'translateY(-8px)';
+                setTimeout(() => {
+                    card.style.transform = 'translateY(-5px)';
+                }, 150);
+            }
+        });
+    });
+
+    // Global keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        // Alt + T for theme toggle
+        if (e.altKey && e.key === 't') {
+            e.preventDefault();
+            toggleTheme();
+        }
+        
+        // Alt + H for home section
+        if (e.altKey && e.key === 'h') {
+            e.preventDefault();
+            document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Alt + A for about section
+        if (e.altKey && e.key === 'a') {
+            e.preventDefault();
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Alt + P for projects section
+        if (e.altKey && e.key === 'p') {
+            e.preventDefault();
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Alt + C for contact section
+        if (e.altKey && e.key === 'c') {
+            e.preventDefault();
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    // Skip to main content link (accessibility)
+    const skipLink = document.createElement('a');
+    skipLink.href = '#home';
+    skipLink.textContent = 'Skip to main content';
+    skipLink.className = 'skip-link';
+    skipLink.style.cssText = `
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: var(--primary-color);
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 1000;
+        transition: top 0.3s;
+    `;
+    
+    skipLink.addEventListener('focus', () => {
+        skipLink.style.top = '6px';
+    });
+    
+    skipLink.addEventListener('blur', () => {
+        skipLink.style.top = '-40px';
+    });
+    
+    document.body.insertBefore(skipLink, document.body.firstChild);
+}
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     preloadImages();
+    initKeyboardNavigation();
     
     // Add loading animation
     document.body.classList.add('loaded');

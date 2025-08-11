@@ -13,18 +13,61 @@
     box-shadow: none !important;
 }
 
-a:focus,
+/* Custom keyboard focus styles for accessibility */
 a:focus-visible,
-a:active,
-button:focus,
 button:focus-visible,
-button:active,
-input:focus,
-input:focus-visible,
-textarea:focus,
-textarea:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
+.project-card:focus-visible,
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+    border-radius: 4px !important;
+}
+
+/* Navigation links keyboard focus */
+.nav-links a:focus-visible {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: 4px !important;
+    border-radius: 6px !important;
+}
+
+/* Button keyboard focus with glow effect */
+.btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-cv:focus-visible {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Project card keyboard focus */
+.project-card:focus-visible {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 0 4px rgba(0, 122, 255, 0.2) !important;
+    transform: translateY(-5px) !important;
+}
+
+/* Dark mode focus adjustments */
+[data-theme="dark"] a:focus-visible,
+[data-theme="dark"] button:focus-visible,
+[data-theme="dark"] .project-card:focus-visible,
+[data-theme="dark"] .theme-toggle:focus-visible {
+    outline-color: #64B5F6 !important;
+}
+
+[data-theme="dark"] .btn:focus-visible,
+[data-theme="dark"] .btn-primary:focus-visible,
+[data-theme="dark"] .btn-secondary:focus-visible,
+[data-theme="dark"] .btn-cv:focus-visible {
+    outline-color: #64B5F6 !important;
+    box-shadow: 0 0 0 4px rgba(100, 181, 246, 0.2) !important;
+}
+
+[data-theme="dark"] .project-card:focus-visible {
+    outline-color: #64B5F6 !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(100, 181, 246, 0.2) !important;
 }
 
 :root {
