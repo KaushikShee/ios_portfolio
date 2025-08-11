@@ -1148,7 +1148,6 @@ html {
     }
     
     .hero-title,
-    .section-title,
     .gradient-text {
         -webkit-text-fill-color: unset;
         background-clip: unset;
@@ -1157,10 +1156,28 @@ html {
     }
     
     .gradient-text {
-        background: var(--gradient);
+        background: var(--hero-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+    }
+
+    /* Ensure section titles have hero blue-red gradient text on mobile - remove background bar */
+    .section-title {
+        background: var(--hero-gradient) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        /* Remove any background styling that creates bars */
+        background-size: 100% 100% !important;
+        background-repeat: no-repeat !important;
+        position: relative !important;
+    }
+    
+    /* Remove any pseudo-elements that might create background bars */
+    .section-title::before,
+    .section-title::after {
+        display: none !important;
     }
 }
 
