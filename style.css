@@ -77,6 +77,19 @@ body {
     height: 70px;
 }
 
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.01rem;
+}
+
+.nav-logo-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
 .nav-logo span {
     font-size: 1.5rem;
     font-weight: 700;
