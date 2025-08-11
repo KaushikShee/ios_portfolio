@@ -218,6 +218,8 @@ body {
 
 .hero-text {
     animation: slideInLeft 1s ease-out;
+    position: relative;
+    z-index: 10; /* Above floating icons */
 }
 
 .hero-title {
@@ -466,20 +468,38 @@ body {
     height: 100%;
     pointer-events: none;
     overflow: hidden;
+    z-index: 1; /* Behind all main content */
 }
 
 .floating-icon {
     position: absolute;
     font-size: 2rem;
-    color: var(--primary-color);
-    opacity: 0.1;
+    opacity: 0.3;
     animation: floatAround 20s linear infinite;
     animation-delay: var(--delay);
+    transition: color 0.3s ease;
 }
 
-.floating-icon:nth-child(1) { top: 20%; left: 10%; }
-.floating-icon:nth-child(2) { top: 60%; right: 15%; }
-.floating-icon:nth-child(3) { bottom: 30%; left: 20%; }
+/* Light mode colors */
+.floating-icon {
+    color: var(--primary-color);
+}
+
+/* Dark mode colors - better visibility */
+[data-theme="dark"] .floating-icon {
+    color: var(--text-secondary);
+    opacity: 0.4;
+}
+
+/* Position floating icons to avoid overlapping with main content */
+.floating-icon:nth-child(1) { top: 10%; left: 2%; }
+.floating-icon:nth-child(2) { top: 85%; right: 5%; }
+.floating-icon:nth-child(3) { bottom: 10%; left: 5%; }
+.floating-icon:nth-child(4) { top: 25%; right: 2%; }
+.floating-icon:nth-child(5) { bottom: 35%; right: 3%; }
+.floating-icon:nth-child(6) { top: 90%; left: 40%; }
+.floating-icon:nth-child(7) { top: 60%; left: 2%; }
+.floating-icon:nth-child(8) { bottom: 5%; right: 45%; }
 
 @keyframes floatAround {
     0% { transform: translateY(0px) rotate(0deg); }
@@ -821,6 +841,8 @@ section {
         order: 1;
         opacity: 0;
         transform: translateX(-50px);
+        position: relative;
+        z-index: 10;
     }
 
     .hero-phone.animate-in {
