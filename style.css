@@ -673,6 +673,18 @@ section {
     gap: 2rem;
 }
 
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 .project-card {
     background: var(--background);
     border-radius: 20px;
@@ -720,12 +732,110 @@ section {
 }
 
 .project-tech span {
-    background: var(--surface);
-    color: var(--text-primary);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 500;
+}
+
+/* Marina Home Project Card Styling - Black & Gold Theme */
+.marina-home-card {
+    background: var(--background);
+    box-shadow: 0 4px 20px var(--shadow);
+}
+
+[data-theme="dark"] .marina-home-card {
+    background: var(--background);
+    box-shadow: 0 4px 20px var(--shadow);
+}
+
+.marina-home-image {
+    background: #000000;
+    padding: 2rem;
+    border-bottom: 1px solid #d4af37;
+}
+
+.project-logo {
+    max-width: 120px;
+    max-height: 120px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(1.1) contrast(1.1);
+    border-radius: 8px;
+}
+
+.marina-home-card .project-content {
+    background: var(--background);
+}
+
+.marina-home-card .project-content h3 {
+    color: #d4af37;
+    font-weight: 700;
+}
+
+.marina-home-card .project-content p {
+    color: var(--text-secondary);
+}
+
+.marina-home-card .project-tech span {
+    background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+    color: white;
+    font-weight: 600;
+    border: 1px solid #d4af37;
+}
+
+.marina-home-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--shadow);
+}
+
+/* BinSina Pharmacy Project Card Styling - Adaptive Theme with Brand Colors */
+.binsina-card {
+    background: var(--background);
+    box-shadow: 0 4px 20px var(--shadow);
+}
+
+[data-theme="dark"] .binsina-card {
+    background: var(--background);
+    box-shadow: 0 4px 20px var(--shadow);
+}
+
+.binsina-image {
+    background: #ffffff;
+    padding: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+[data-theme="dark"] .binsina-image {
+    border-bottom: 1px solid #444444;
+}
+
+.binsina-card .project-content {
+    background: var(--background);
+}
+
+.binsina-card .project-content h3 {
+    color: #0085CA;
+    font-weight: 700;
+}
+
+.binsina-card .project-content p {
+    color: var(--text-secondary);
+}
+
+.binsina-card .project-tech span {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    font-weight: 600;
+    border: 1px solid #dc3545;
+}
+
+.binsina-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 133, 202, 0.2);
 }
 
 /* Contact Section */
