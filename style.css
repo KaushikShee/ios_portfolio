@@ -303,6 +303,36 @@ body {
     color: var(--primary-color);
 }
 
+.btn-cv {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: white;
+    border: none;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    animation: cvPulse 2s ease-in-out infinite;
+}
+
+.btn-cv:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(135deg, #f7931e 0%, #ff6b35 100%);
+}
+
+.btn-cv i {
+    font-size: 1rem;
+}
+
+@keyframes cvPulse {
+    0%, 100% { 
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+        transform: scale(1.02);
+    }
+}
+
 /* iPhone Mockup */
 .hero-phone {
     display: flex;
