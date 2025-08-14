@@ -183,6 +183,158 @@ if (heroSection) {
     heroObserver.observe(heroSection);
 }
 
+// About Section Interactive Effects
+class AboutInteractiveEffects {
+    constructor() {
+        this.aboutSection = document.querySelector('.about');
+        this.statCards = document.querySelectorAll('.stat');
+        this.particles = [];
+        this.mouse = { x: 0, y: 0 };
+        this.init();
+    }
+
+    init() {
+        if (!this.aboutSection) return;
+        this.createParticleSystem();
+        this.addMouseTracking();
+        this.addMagneticEffect();
+        this.addIntersectionObserver();
+    }
+
+    createParticleSystem() {
+        const particleContainer = document.createElement('div');
+        particleContainer.className = 'about-particles';
+        particleContainer.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        `;
+        this.aboutSection.appendChild(particleContainer);
+
+        // Create floating particles
+        for (let i = 0; i < 12; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'interactive-particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: ${Math.random() * 4 + 2}px;
+                height: ${Math.random() * 4 + 2}px;
+                background: radial-gradient(circle, rgba(10, 132, 255, 0.8), rgba(255, 69, 58, 0.6));
+                border-radius: 50%;
+                opacity: 0.3;
+                transition: all 0.3s ease;
+                box-shadow: 0 0 10px rgba(10, 132, 255, 0.5);
+            `;
+            
+            this.particles.push({
+                element: particle,
+                x: Math.random() * (this.aboutSection.offsetWidth || 800),
+                y: Math.random() * 200,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 4 + 2
+            });
+            
+            particleContainer.appendChild(particle);
+        }
+
+        this.animateParticles();
+    }
+
+    animateParticles() {
+        this.particles.forEach(particle => {
+            // Mouse attraction
+            const dx = this.mouse.x - particle.x;
+            const dy = this.mouse.y - particle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 150) {
+                particle.vx += dx * 0.00005;
+                particle.vy += dy * 0.00005;
+                particle.element.style.opacity = Math.max(0.8 - distance / 150, 0);
+                particle.element.style.transform = `scale(${1 + (150 - distance) / 150})`;
+            } else {
+                particle.element.style.opacity = '0.3';
+                particle.element.style.transform = 'scale(1)';
+            }
+
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+
+            // Boundary check
+            const maxWidth = this.aboutSection.offsetWidth || 800;
+            if (particle.x < 0 || particle.x > maxWidth) particle.vx *= -1;
+            if (particle.y < 0 || particle.y > 400) particle.vy *= -1;
+
+            // Apply friction
+            particle.vx *= 0.99;
+            particle.vy *= 0.99;
+
+            particle.element.style.left = particle.x + 'px';
+            particle.element.style.top = particle.y + 'px';
+        });
+
+        requestAnimationFrame(() => this.animateParticles());
+    }
+
+    addMouseTracking() {
+        this.aboutSection.addEventListener('mousemove', (e) => {
+            const rect = this.aboutSection.getBoundingClientRect();
+            this.mouse.x = e.clientX - rect.left;
+            this.mouse.y = e.clientY - rect.top;
+        });
+    }
+
+    addMagneticEffect() {
+        this.statCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                const moveX = x * 0.15;
+                const moveY = y * 0.15;
+                
+                card.style.transform = `translateY(-15px) scale(1.05) rotateX(${-moveY * 0.1}deg) rotateY(${moveX * 0.1}deg) translate3d(${moveX}px, ${moveY}px, 0)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    }
+
+    addIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    // Trigger special animation
+                    setTimeout(() => {
+                        entry.target.style.animation = 'none';
+                        entry.target.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+                    }, 800);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        this.statCards.forEach(card => observer.observe(card));
+    }
+}
+
+// Initialize About Interactive Effects when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new AboutInteractiveEffects();
+    });
+} else {
+    new AboutInteractiveEffects();
+}
+
 // Parallax Effect for Hero Section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
@@ -511,33 +663,7 @@ function initKeyboardNavigation() {
         }
     });
 
-    // Skip to main content link (accessibility)
-    const skipLink = document.createElement('a');
-    skipLink.href = '#home';
-    skipLink.textContent = 'Skip to main content';
-    skipLink.className = 'skip-link';
-    skipLink.style.cssText = `
-        position: absolute;
-        top: -40px;
-        left: 6px;
-        background: var(--primary-color);
-        color: white;
-        padding: 8px;
-        text-decoration: none;
-        border-radius: 4px;
-        z-index: 1000;
-        transition: top 0.3s;
-    `;
-    
-    skipLink.addEventListener('focus', () => {
-        skipLink.style.top = '6px';
-    });
-    
-    skipLink.addEventListener('blur', () => {
-        skipLink.style.top = '-40px';
-    });
-    
-    document.body.insertBefore(skipLink, document.body.firstChild);
+
 }
 
 // Initialize everything when DOM is ready
