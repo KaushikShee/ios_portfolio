@@ -476,18 +476,125 @@ window.addEventListener('load', () => {
     }
 });
 
-// Skill Item Hover Effects
-document.querySelectorAll('.skill-item').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        const icon = item.querySelector('i');
-        icon.style.transform = 'scale(1.2) rotate(10deg)';
+// Enhanced Skills Section Interactive Effects
+class SkillsInteractiveEffects {
+    constructor() {
+        this.skillsSection = document.querySelector('.skills');
+        this.skillCategories = document.querySelectorAll('.skill-category');
+        this.skillItems = document.querySelectorAll('.skill-item');
+        this.init();
+    }
+
+    init() {
+        if (!this.skillsSection) return;
+        this.addIntersectionObserver();
+        this.addSkillItemEffects();
+        this.addCategoryEffects();
+    }
+
+    addIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    // Trigger staggered animations
+                    this.triggerStaggeredAnimations();
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(this.skillsSection);
+    }
+
+    triggerStaggeredAnimations() {
+        this.skillCategories.forEach((category, index) => {
+            setTimeout(() => {
+                category.style.animationPlayState = 'running';
+            }, index * 200);
+        });
+    }
+
+    addSkillItemEffects() {
+        this.skillItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const icon = item.querySelector('i');
+                const span = item.querySelector('span');
+                
+                // Enhanced icon animation
+                if (icon) {
+                    icon.style.transform = 'scale(1.2) rotate(5deg)';
+                    icon.style.filter = 'drop-shadow(0 0 12px rgba(255, 255, 255, 0.5))';
+                }
+                
+                // Add ripple effect
+                this.createRippleEffect(item);
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                const icon = item.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                    icon.style.filter = 'drop-shadow(0 0 8px rgba(10, 132, 255, 0.3))';
+                }
+            });
+        });
+    }
+
+    addCategoryEffects() {
+        this.skillCategories.forEach(category => {
+            category.addEventListener('mouseenter', () => {
+                // Add subtle glow effect to other categories
+                this.skillCategories.forEach(otherCategory => {
+                    if (otherCategory !== category) {
+                        otherCategory.style.opacity = '0.7';
+                        otherCategory.style.transform = 'scale(0.98)';
+                    }
+                });
+            });
+
+            category.addEventListener('mouseleave', () => {
+                // Reset all categories
+                this.skillCategories.forEach(otherCategory => {
+                    otherCategory.style.opacity = '1';
+                    otherCategory.style.transform = 'scale(1)';
+                });
+            });
+        });
+    }
+
+    createRippleEffect(element) {
+        const ripple = document.createElement('div');
+        ripple.style.cssText = `
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-left: -10px;
+            margin-top: -10px;
+        `;
+
+        element.appendChild(ripple);
+
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    }
+}
+
+// Initialize Skills Interactive Effects
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new SkillsInteractiveEffects();
     });
-    
-    item.addEventListener('mouseleave', () => {
-        const icon = item.querySelector('i');
-        icon.style.transform = 'scale(1) rotate(0deg)';
-    });
-});
+} else {
+    new SkillsInteractiveEffects();
+}
 
 // Project Card Tilt Effect
 document.querySelectorAll('.project-card').forEach(card => {
