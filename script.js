@@ -1056,10 +1056,43 @@ function initKeyboardNavigation() {
 
 }
 
+// Desktop-only: Projects slide from left to right based on scroll position
+function initProjectsAnimation() {
+    // Only run on desktop
+    if (window.innerWidth <= 768) return;
+    
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    if (projectCards.length === 0) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                const card = entry.target;
+                const cardIndex = Array.from(projectCards).indexOf(card);
+                
+                // Staggered animation with smooth CSS transitions
+                setTimeout(() => {
+                    card.style.transform = 'translateX(0)';
+                    card.style.opacity = '1';
+                }, cardIndex * 200);
+            }
+        });
+    }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -100px 0px'
+    });
+    
+    projectCards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     preloadImages();
     initKeyboardNavigation();
+    initProjectsAnimation();
     
     // Add loading animation
     document.body.classList.add('loaded');

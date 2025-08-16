@@ -2550,9 +2550,25 @@ html {
   .projects .project-tech span { transition: none !important; animation: none !important; }
 }
 
+/* Desktop-only: Projects slide from left to right on scroll */
+@media (min-width: 769px) {
+  .project-card {
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .project-card::before, .project-image::after { display: none; }
+  
+  /* Reset project cards to normal state on mobile */
+  .project-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 [data-theme="dark"] .project-card {
@@ -2603,4 +2619,125 @@ html {
     background: rgba(0, 0, 0, 0.2);
     border-color: var(--primary-color) !important;
     box-shadow: 0 12px 40px rgba(100, 181, 246, 0.3);
+}
+
+/* ==============================
+   Premium Parallax Scroll Effect
+   Each section slides over the previous one
+   ============================== */
+
+/* Base section styling for parallax */
+section {
+    position: relative;
+    min-height: 100vh;
+    background: var(--background);
+}
+
+/* Hero section - base layer with sticky positioning */
+.hero {
+    z-index: 1;
+    position: sticky;
+    top: 0;
+}
+
+/* About section - slides over hero */
+.about {
+    z-index: 2;
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    border-radius: 30px 30px 0 0;
+    margin-top: -30px;
+    padding-top: 60px;
+}
+
+/* Skills section - slides over about */
+.skills {
+    z-index: 3;
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    border-radius: 30px 30px 0 0;
+    margin-top: -30px;
+    padding-top: 60px;
+}
+
+/* Projects section - slides over skills */
+.projects {
+    z-index: 4;
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    border-radius: 30px 30px 0 0;
+    margin-top: -30px;
+    padding-top: 60px;
+}
+
+/* Contact section - slides over projects */
+.contact {
+    z-index: 5;
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    border-radius: 30px 30px 0 0;
+    margin-top: -30px;
+    padding-top: 60px;
+}
+
+/* Footer - top layer */
+.footer {
+    z-index: 6;
+    position: relative;
+    background: var(--surface);
+    margin-top: -30px;
+    border-radius: 30px 30px 0 0;
+    padding-top: 60px;
+}
+
+/* Ensure navbar stays above all sections */
+.navbar {
+    z-index: 1000;
+}
+
+/* Mobile: disable parallax for Projects section to show all content */
+@media (max-width: 768px) {
+    section {
+        min-height: 100vh; /* maintain full height for parallax */
+    }
+    
+    /* Disable parallax for Projects section on mobile to ensure all 3 projects show */
+    .projects {
+        position: relative !important; /* override sticky positioning */
+        min-height: auto; /* let content determine height */
+        margin-top: 0; /* remove negative margin */
+        border-radius: 0; /* remove rounded corners */
+        padding-top: 4rem; /* normal section padding */
+        padding-bottom: 4rem;
+    }
+    
+    /* Skills section needs more height for mobile content */
+    .skills {
+        min-height: 120vh;
+    }
+    
+    /* Keep sticky positioning for other sections */
+    .about, .skills, .contact, .footer {
+        border-radius: 20px 20px 0 0;
+        margin-top: -20px;
+        padding-top: 40px;
+    }
+}
+
+/* Reduced motion: disable parallax for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .hero, .about, .skills, .projects, .contact, .footer {
+        position: relative !important;
+        margin-top: 0 !important;
+        border-radius: 0 !important;
+        padding-top: 4rem !important;
+    }
+    
+    .hero {
+        padding-top: 0 !important;
+    }
 }
