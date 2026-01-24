@@ -627,6 +627,12 @@ section {
     flex-wrap: wrap;
 }
 
+.about-tags.icon-tags {
+    gap: 24px;
+    align-items: center;
+    margin-top: 32px;
+}
+
 .tag {
     padding: 8px 16px;
     background: var(--bg-card);
@@ -634,6 +640,18 @@ section {
     border-radius: 6px;
     font-size: 0.85rem;
     color: var(--text-secondary);
+}
+
+.tag-icon {
+    font-size: 2.5rem;
+    color: var(--text-muted);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: help;
+    display: inline-flex;
+}
+
+.tag-icon:hover {
+    color: var(--text-primary);
 }
 
 .about-cards {

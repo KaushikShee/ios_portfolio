@@ -60,18 +60,24 @@ function About() {
                         <p className="about-description">
                             Passionate and detail-oriented iOS Developer with hands-on experience building, testing, and deploying iOS applications using Swift and SwiftUI. Proficient in developing user-friendly interfaces, integrating RESTful APIs, managing app lifecycle, and working with Apple frameworks such as UIKit, AVFoundation, CoreData, and WebKit. Experienced in version control (Git), debugging, and collaborating in Agile teams. Eager to contribute to high-quality mobile products and continuously learn emerging iOS technologies.
                         </p>
-                        <div className="about-tags">
-                            {['Swift', 'UIKit', 'SwiftUI', 'Agile'].map((tag, index) => (
-                                <motion.span
-                                    key={tag}
-                                    className="tag"
+                        <div className="about-tags icon-tags">
+                            {[
+                                { icon: 'fab fa-swift', name: 'Swift' },
+                                { icon: 'fab fa-apple', name: 'UIKit' },
+                                { icon: 'fas fa-layer-group', name: 'SwiftUI' },
+                                { icon: 'fas fa-sync-alt', name: 'Agile' }
+                            ].map((item, index) => (
+                                <motion.div
+                                    key={item.name}
+                                    className="tag-icon"
+                                    title={item.name}
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                                     transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                                    whileHover={{ scale: 1.1, y: -2 }}
+                                    whileHover={{ scale: 1.2, rotate: 10, color: 'var(--accent-blue)' }}
                                 >
-                                    {tag}
-                                </motion.span>
+                                    <i className={item.icon} />
+                                </motion.div>
                             ))}
                         </div>
                     </motion.div>
