@@ -10,7 +10,7 @@ function Footer() {
             transition={{ duration: 0.5 }}
         >
             <div className="container">
-                <p>&copy; 2025 Kaushik Shee. All rights reserved.</p>
+                <p>&copy; 2026 Kaushik Shee. All rights reserved.</p>
             </div>
         </motion.footer>
     )
