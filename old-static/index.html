@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaushik Shee - iOS Developer</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="shortcut icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Grid Background -->
+    <div class="grid-background"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">KS.</a>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <a href="kaushik.pdf" download="Kaushik_Shee_Resume.pdf" class="btn-resume">
+                <i class="fas fa-download"></i>
+                Resume
+            </a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="availability-badge">
+                        <span class="pulse-dot"></span>
+                        Available for work
+                    </span>
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="gradient-text">Kaushik</span>
+                    </h1>
+                    <h2 class="hero-subtitle">iOS Developer</h2>
+                    <p class="hero-description">
+                        Building high-quality iOS apps with Swift & SwiftUI
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="kaushik.pdf" download="Kaushik_Shee_Resume.pdf" class="btn btn-primary">
+                            <i class="fas fa-download"></i>
+                            Download Resume
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i>
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-wrapper">
+                        <div class="profile-ring"></div>
+                        <div class="profile-photo">
+                            <img src="user.jpg" alt="Kaushik Shee">
+                        </div>
+                        <div class="floating-badge apple-badge">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <div class="floating-badge swift-badge">
+                            <i class="fab fa-swift"></i>
+                        </div>
+                        <div class="floating-badge xcode-badge">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <span class="section-badge blue">About Me</span>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="about-title">
+                        Crafting iOS experiences<br>
+                        <span class="text-muted">that users love</span>
+                    </h2>
+                    <p class="about-description">
+                        Passionate and detail-oriented iOS Developer with hands-on experience building, testing, and deploying iOS applications using Swift and SwiftUI. Proficient in developing user-friendly interfaces, integrating RESTful APIs, managing app lifecycle, and working with Apple frameworks such as UIKit, AVFoundation, CoreData, and WebKit. Experienced in version control (Git), debugging, and collaborating in Agile teams. Eager to contribute to high-quality mobile products and continuously learn emerging iOS technologies.
+                    </p>
+                    <div class="about-tags">
+                        <span class="tag">Swift</span>
+                        <span class="tag">UIKit</span>
+                        <span class="tag">SwiftUI</span>
+                        <span class="tag">Agile</span>
+                    </div>
+                </div>
+                <div class="about-cards">
+                    <div class="about-card">
+                        <div class="card-icon blue">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>iOS Development</h3>
+                        <p>Native apps with Swift & SwiftUI</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon blue">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Clean Code</h3>
+                        <p>Following Apple guidelines & best practices</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon blue">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Performance</h3>
+                        <p>Optimized & responsive applications</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon blue">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Collaboration</h3>
+                        <p>Agile teams & version control</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <span class="section-badge green">Skills & Expertise</span>
+            <h2 class="section-title">Technologies I work with</h2>
+            <p class="section-subtitle">Proficient in modern iOS development tools and frameworks</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card blue-accent">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <span>iOS</span>
+                </div>
+                <div class="skill-card green-accent">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <span>Swift</span>
+                </div>
+                <div class="skill-card teal-accent">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <span>Xcode</span>
+                </div>
+                <div class="skill-card purple-accent">
+                    <div class="skill-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <span>UIKit</span>
+                </div>
+                <div class="skill-card orange-accent">
+                    <div class="skill-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <span>SwiftUI</span>
+                </div>
+                <div class="skill-card blue-accent">
+                    <div class="skill-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <span>SPM</span>
+                </div>
+                <div class="skill-card green-accent">
+                    <div class="skill-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span>CocoaPods</span>
+                </div>
+                <div class="skill-card purple-accent">
+                    <div class="skill-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <span>Firebase</span>
+                </div>
+                <div class="skill-card blue-accent">
+                    <div class="skill-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <span>REST APIs</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 class="stat-number green">3+</h3>
+                    <p>Years Learning</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="stat-number green">5+</h3>
+                    <p>Apps Deployed</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="stat-number green">10+</h3>
+                    <p>Technologies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <span class="section-badge orange">Experience</span>
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-subtitle">Professional journey in iOS development</p>
+
+            <div class="experience-timeline">
+                <div class="timeline-line"></div>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-info">
+                            <div class="company-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div>
+                                <h3>iOS Developer</h3>
+                                <span class="company-name">Codilar Technologies Pvt Ltd</span>
+                            </div>
+                        </div>
+                        <span class="experience-date">
+                            <i class="fas fa-calendar"></i>
+                            2024 - Present
+                        </span>
+                    </div>
+                    <ul class="experience-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Worked on ecommerce-based iOS projects using UIKit
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Implemented complex features and workflows
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Multi-language app support
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Login systems using Firebase
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            Push notification integration
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <span class="section-badge blue">Projects</span>
+            <h2 class="section-title">Featured Work</h2>
+            <p class="section-subtitle">A showcase of iOS applications I've built and contributed to</p>
+
+            <div class="projects-grid">
+                <div class="project-card green-glow">
+                    <span class="project-badge green">Official iOS App</span>
+                    <h3>Marina Homes</h3>
+                    <p>E-commerce app for home interiors with multi-language support and seamless shopping...</p>
+                    <div class="project-tags">
+                        <span>UIKit</span>
+                        <span>Firebase</span>
+                        <span>REST APIs</span>
+                    </div>
+                    <a href="https://apps.apple.com/us/app/marina-home/id6447933191" target="_blank" class="project-link">
+                        View Details <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <div class="project-card teal-glow">
+                    <span class="project-badge teal">In-house App</span>
+                    <h3>ODDO ERP System</h3>
+                    <p>Internal event management system with advanced features for enterprise use.</p>
+                    <div class="project-tags">
+                        <span>SwiftUI</span>
+                        <span>CoreML</span>
+                        <span>AVFoundation</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        View Details <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <div class="project-card orange-glow">
+                    <span class="project-badge orange">Official iOS App</span>
+                    <h3>Binsina Pharmacy</h3>
+                    <p>Healthcare app with comprehensive subscription and loyalty membership systems.</p>
+                    <div class="project-tags">
+                        <span>UIKit</span>
+                        <span>Firebase</span>
+                        <span>REST APIs</span>
+                    </div>
+                    <a href="https://apps.apple.com/us/app/binsina/id1633403246" target="_blank" class="project-link">
+                        View Details <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="education-grid">
+                <div class="education-block">
+                    <span class="section-badge purple">Education</span>
+                    <h2 class="block-title">Academic Background</h2>
+                    <div class="education-card">
+                        <div class="edu-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="edu-info">
+                            <h3>Bachelor of Computer Applications</h3>
+                            <p class="edu-institution">University Name</p>
+                            <span class="edu-year">2020 - 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="languages-block">
+                    <span class="section-badge cyan">Languages</span>
+                    <h2 class="block-title">Languages I Speak</h2>
+                    <div class="language-bars">
+                        <div class="language-item">
+                            <div class="language-header">
+                                <span>English</span>
+                                <span>Professional</span>
+                            </div>
+                            <div class="language-bar">
+                                <div class="language-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-header">
+                                <span>Hindi</span>
+                                <span>Native</span>
+                            </div>
+                            <div class="language-bar">
+                                <div class="language-progress orange" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-header">
+                                <span>Bengali</span>
+                                <span>Native</span>
+                            </div>
+                            <div class="language-bar">
+                                <div class="language-progress blue" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="contact-title">Let's Work Together</h2>
+            <p class="contact-subtitle">Have a project in mind? Let's create something amazing.</p>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit">
+                    Send Message
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+
+            <div class="contact-links">
+                <a href="mailto:kaushikshee901@gmail.com" class="contact-link-item">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://linkedin.com/in/kaushikshee" target="_blank" class="contact-link-item">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/kaushikshee" target="_blank" class="contact-link-item">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Kaushik Shee. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
