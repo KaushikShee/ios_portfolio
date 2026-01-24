@@ -122,7 +122,7 @@ function Hero() {
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                             >
-                                <i className="fas fa-laptop-code" />
+                                <img src="/xcode-icon.png" alt="Xcode" className="xcode-icon" />
                             </motion.div>
                         </div>
                     </motion.div>

@@ -432,8 +432,14 @@ body {
 .xcode-badge {
     bottom: 20px;
     right: -10px;
-    background: var(--accent-teal);
-    color: var(--bg-primary);
+    background: transparent;
+    padding: 0;
+}
+
+.xcode-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
 }
 
 .scroll-indicator {
