@@ -23,7 +23,7 @@ function Contact() {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    access_key: 'YOUR_ACCESS_KEY_HERE', // Replace with your Web3Forms access key
+                    access_key: 'a1f06128-4622-4067-b0a6-83c3e1ca0ced', // Replace with your Web3Forms access key
                     name: formData.name,
                     email: formData.email,
                     message: formData.message,

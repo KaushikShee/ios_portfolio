@@ -78,7 +78,7 @@ function Education() {
                             <div className="edu-info">
                                 <h3>Bachelor of Computer Applications</h3>
                                 <p className="edu-institution">Gurunanak Institute of Technology, Kolkata</p>
-                                <span className="edu-year">2020 - 2023</span>
+                                <span className="edu-year">2019 - 2023</span>
                             </div>
                         </motion.div>
                     </motion.div>
