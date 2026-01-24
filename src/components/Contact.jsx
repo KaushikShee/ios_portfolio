@@ -5,18 +5,58 @@ function Contact() {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-100px' })
     const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+    const [status, setStatus] = useState({ type: '', message: '' })
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        const { name, email, message } = formData
-        const mailtoLink = `mailto:kaushikshee901@gmail.com?subject=Portfolio Contact from ${name}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`
-        window.location.href = mailtoLink
-        setFormData({ name: '', email: '', message: '' })
+        setIsSubmitting(true)
+        setStatus({ type: '', message: '' })
+
+        try {
+            // Using Web3Forms for email delivery (free service)
+            // Get your access key at: https://web3forms.com/
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: 'YOUR_ACCESS_KEY_HERE', // Replace with your Web3Forms access key
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                    subject: `Portfolio Contact from ${formData.name}`,
+                }),
+            })
+
+            const result = await response.json()
+
+            if (result.success) {
+                setStatus({ type: 'success', message: 'Message sent successfully! I\'ll get back to you soon.' })
+                setFormData({ name: '', email: '', message: '' })
+            } else {
+                throw new Error(result.message || 'Failed to send')
+            }
+        } catch (error) {
+            // Fallback to mailto if Web3Forms fails or not configured
+            const { name, email, message } = formData
+            const mailtoLink = `mailto:kaushikshee901@gmail.com?subject=Portfolio Contact from ${name}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`
+            window.location.href = mailtoLink
+            setStatus({ type: 'info', message: 'Opening your email client...' })
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData((prev) => ({ ...prev, [name]: value }))
+        // Clear status when user starts typing again
+        if (status.message) {
+            setStatus({ type: '', message: '' })
+        }
     }
 
     const socialLinks = [
@@ -69,6 +109,7 @@ function Contact() {
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
+                                disabled={isSubmitting}
                             />
                         </motion.div>
                         <motion.div
@@ -86,6 +127,7 @@ function Contact() {
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
+                                disabled={isSubmitting}
                             />
                         </motion.div>
                     </div>
@@ -105,20 +147,43 @@ function Contact() {
                             value={formData.message}
                             onChange={handleChange}
                             required
+                            disabled={isSubmitting}
                         />
                     </motion.div>
+
+                    {status.message && (
+                        <motion.div
+                            className={`form-status ${status.type}`}
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <i className={status.type === 'success' ? 'fas fa-check-circle' : 'fas fa-info-circle'} />
+                            {status.message}
+                        </motion.div>
+                    )}
 
                     <motion.button
                         type="submit"
                         className="btn-submit"
-                        whileHover={{ scale: 1.02, y: -3 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={!isSubmitting ? { scale: 1.02, y: -3 } : {}}
+                        whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.5 }}
+                        disabled={isSubmitting}
                     >
-                        Send Message
-                        <i className="fas fa-paper-plane" />
+                        {isSubmitting ? (
+                            <>
+                                <span className="loading-spinner" />
+                                Sending...
+                            </>
+                        ) : (
+                            <>
+                                Send Message
+                                <i className="fas fa-paper-plane" />
+                            </>
+                        )}
                     </motion.button>
                 </motion.form>
 
