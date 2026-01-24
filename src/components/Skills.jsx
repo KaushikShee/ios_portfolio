@@ -2,9 +2,9 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 
 const skills = [
-    { name: 'iOS', icon: 'fas fa-mobile-alt', accent: 'blue-accent' },
-    { name: 'Swift', icon: 'fas fa-code', accent: 'green-accent' },
-    { name: 'Xcode', icon: 'fas fa-laptop-code', accent: 'teal-accent' },
+    { name: 'iOS', icon: 'fab fa-apple', accent: 'blue-accent' },
+    { name: 'Swift', icon: 'fab fa-swift', accent: 'orange-accent' },
+    { name: 'Xcode', icon: 'fas fa-hammer', accent: 'teal-accent' },
     { name: 'UIKit', icon: 'fas fa-layer-group', accent: 'purple-accent' },
     { name: 'SwiftUI', icon: 'fas fa-cubes', accent: 'orange-accent' },
     { name: 'SPM', icon: 'fas fa-box', accent: 'blue-accent' },
