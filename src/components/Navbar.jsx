@@ -84,8 +84,8 @@ function Navbar() {
         <>
             <motion.nav
                 className={`navbar ${isScrolled ? 'scrolled' : ''}`}
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={{ y: -100, x: '-50%', opacity: 0 }}
+                animate={{ y: 0, x: '-50%', opacity: 1 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
                 <div className="nav-container">
@@ -97,7 +97,7 @@ function Navbar() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        KS.
+                        KS<span className="logo-dot">.</span>
                     </motion.a>
 
                     {/* Desktop Navigation */}

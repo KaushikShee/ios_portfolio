@@ -98,10 +98,13 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    position: relative;
 }
 
 .nav-logo {
+    position: absolute;
+    left: 24px;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
@@ -111,7 +114,16 @@ body {
 }
 
 .nav-logo:hover {
+    color: var(--text-primary);
+}
+
+.nav-logo:hover .logo-dot {
     color: var(--accent-blue);
+}
+
+.logo-dot {
+    color: var(--accent-blue);
+    transition: var(--transition);
 }
 
 .nav-menu {
@@ -157,6 +169,8 @@ body {
 }
 
 .btn-resume {
+    position: absolute;
+    right: 24px;
     display: flex;
     align-items: center;
     gap: 8px;
