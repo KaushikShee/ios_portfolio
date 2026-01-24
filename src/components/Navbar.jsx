@@ -183,17 +183,6 @@ function Navbar() {
                                 {link.label}
                             </motion.a>
                         ))}
-                        <motion.a
-                            href="/kaushik.pdf"
-                            download="Kaushik_Shee_Resume.pdf"
-                            className="btn-resume"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                        >
-                            <i className="fas fa-download" />
-                            Download Resume
-                        </motion.a>
                     </motion.div>
                 )}
             </AnimatePresence>

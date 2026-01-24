@@ -445,6 +445,67 @@ body {
     cursor: pointer;
 }
 
+/* Floating Background Icons */
+.floating-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.floating-icon {
+    position: absolute;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.04);
+    opacity: 0.6;
+}
+
+.floating-icon.icon-1 {
+    top: 15%;
+    left: 8%;
+    font-size: 3rem;
+    color: rgba(59, 130, 246, 0.08);
+}
+
+.floating-icon.icon-2 {
+    top: 25%;
+    right: 12%;
+    font-size: 2.5rem;
+    color: rgba(240, 81, 56, 0.08);
+}
+
+.floating-icon.icon-3 {
+    bottom: 30%;
+    left: 5%;
+    font-size: 2rem;
+    color: rgba(34, 197, 94, 0.06);
+}
+
+.floating-icon.icon-4 {
+    top: 60%;
+    right: 8%;
+    font-size: 2.2rem;
+    color: rgba(255, 255, 255, 0.05);
+}
+
+.floating-icon.icon-5 {
+    top: 10%;
+    right: 25%;
+    font-size: 1.8rem;
+    color: rgba(59, 130, 246, 0.06);
+}
+
+.floating-icon.icon-6 {
+    bottom: 20%;
+    right: 20%;
+    font-size: 2rem;
+    color: rgba(249, 115, 22, 0.06);
+}
+
 /* ===== Section Common Styles ===== */
 section {
     padding: 100px 0;

@@ -142,6 +142,52 @@ function Hero() {
                     <i className="fas fa-chevron-down" />
                 </motion.div>
             </div>
+
+            {/* Floating Background Icons */}
+            <div className="floating-icons">
+                <motion.div
+                    className="floating-icon icon-1"
+                    animate={{ y: [0, -20, 0], x: [0, 10, 0], rotate: [0, 5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                    <i className="fab fa-apple" />
+                </motion.div>
+                <motion.div
+                    className="floating-icon icon-2"
+                    animate={{ y: [0, 15, 0], x: [0, -8, 0], rotate: [0, -5, 0] }}
+                    transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                >
+                    <i className="fab fa-swift" />
+                </motion.div>
+                <motion.div
+                    className="floating-icon icon-3"
+                    animate={{ y: [0, -15, 0], x: [0, 12, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                >
+                    <i className="fas fa-mobile-alt" />
+                </motion.div>
+                <motion.div
+                    className="floating-icon icon-4"
+                    animate={{ y: [0, 18, 0], x: [0, -10, 0], rotate: [0, 8, 0] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+                >
+                    <i className="fas fa-code" />
+                </motion.div>
+                <motion.div
+                    className="floating-icon icon-5"
+                    animate={{ y: [0, -12, 0], x: [0, 8, 0] }}
+                    transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+                >
+                    <i className="fas fa-terminal" />
+                </motion.div>
+                <motion.div
+                    className="floating-icon icon-6"
+                    animate={{ y: [0, 14, 0], x: [0, -6, 0], rotate: [0, -3, 0] }}
+                    transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+                >
+                    <i className="fas fa-cogs" />
+                </motion.div>
+            </div>
         </section>
     )
 }

@@ -76,7 +76,7 @@ function Education() {
                                 <i className="fas fa-graduation-cap" />
                             </motion.div>
                             <div className="edu-info">
-                                <h3>Bachelor of Computer Applications</h3>
+                                <h3>Bachelor of Technology (B.Tech)</h3>
                                 <p className="edu-institution">Gurunanak Institute of Technology, Kolkata</p>
                                 <span className="edu-year">2019 - 2023</span>
                             </div>
