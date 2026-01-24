@@ -424,9 +424,15 @@ body {
 .swift-badge {
     bottom: 80px;
     left: -20px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    color: #f05138;
+    background: transparent;
+    padding: 0;
+    border: none;
+}
+
+.swift-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
 }
 
 .xcode-badge {

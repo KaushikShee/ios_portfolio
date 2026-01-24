@@ -114,7 +114,7 @@ function Hero() {
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
                             >
-                                <i className="fab fa-swift" />
+                                <img src="/swift-icon.png" alt="Swift" className="swift-icon" />
                             </motion.div>
 
                             <motion.div
