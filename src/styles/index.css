@@ -19,7 +19,7 @@
     --nav-height: 80px;
     --container-max: 1200px;
     --transition: all 0.3s ease;
-    
+
     /* Glassmorphism */
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
@@ -27,7 +27,9 @@
 }
 
 /* ===== Reset & Base ===== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -53,7 +55,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
+    background-image:
         linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 60px 60px;
@@ -143,7 +145,7 @@ body {
     font-weight: 500;
     padding: 8px 16px;
     border-radius: 8px;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     position: relative;
     z-index: 1;
 }
@@ -154,16 +156,18 @@ body {
 
 .nav-link.active {
     color: var(--text-primary);
+    font-weight: 600;
 }
 
-/* Animated nav indicator */
+/* Animated nav indicator - dot below active link */
 .nav-indicator {
     position: absolute;
-    height: calc(100% - 8px);
-    top: 4px;
-    background: rgba(59, 130, 246, 0.2);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    border-radius: 8px;
+    width: 5px !important;
+    height: 5px !important;
+    bottom: 6px;
+    top: auto !important;
+    background: var(--accent-blue);
+    border-radius: 50%;
     z-index: 0;
     pointer-events: none;
 }
@@ -198,6 +202,8 @@ body {
     padding: 8px;
     border-radius: 8px;
     transition: var(--transition);
+    position: absolute;
+    right: 24px;
 }
 
 .hamburger:hover {
@@ -273,8 +279,17 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
 }
 
 .hero-title {
@@ -364,13 +379,18 @@ body {
     border-radius: 50%;
     border: 3px solid transparent;
     background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
-                linear-gradient(135deg, #22c55e, #3b82f6, #22c55e) border-box;
+        linear-gradient(135deg, #22c55e, #3b82f6, #22c55e) border-box;
     animation: rotate 10s linear infinite;
 }
 
 @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .profile-photo {
@@ -903,7 +923,7 @@ section {
     margin-bottom: 12px;
 }
 
-.project-card > p {
+.project-card>p {
     color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.6;
@@ -1211,9 +1231,12 @@ section {
 }
 
 .mobile-menu .btn-resume {
+    position: relative;
+    right: auto;
     margin-top: 16px;
     width: 100%;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 /* ===== Responsive Design ===== */
@@ -1266,7 +1289,7 @@ section {
         width: calc(100% - 24px);
         height: 56px;
     }
-    
+
     .nav-menu {
         display: none;
     }

@@ -19,15 +19,16 @@ function Navbar() {
     const navMenuRef = useRef(null)
     const linkRefs = useRef({})
 
-    // Update indicator position
+    // Update indicator position - dot below the link
     const updateIndicator = (sectionId) => {
         const linkEl = linkRefs.current[sectionId]
         if (linkEl && navMenuRef.current) {
             const navRect = navMenuRef.current.getBoundingClientRect()
             const linkRect = linkEl.getBoundingClientRect()
+            // Center the dot under the link
             setIndicatorStyle({
-                width: linkRect.width,
-                left: linkRect.left - navRect.left,
+                width: 5,
+                left: linkRect.left - navRect.left + (linkRect.width / 2) - 2.5,
             })
         }
     }
