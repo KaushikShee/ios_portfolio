@@ -70,6 +70,18 @@ function Navbar() {
         return () => window.removeEventListener('resize', handleResize)
     }, [activeSection])
 
+    // Prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+        }
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [isMobileMenuOpen])
+
     // Smooth scroll to section
     const scrollToSection = (sectionId) => {
         const section = document.getElementById(sectionId)
@@ -183,6 +195,17 @@ function Navbar() {
                                 {link.label}
                             </motion.a>
                         ))}
+                        <motion.a
+                            href="/kaushik.pdf"
+                            download="Kaushik_Shee_Resume.pdf"
+                            className="btn-resume"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                        >
+                            <i className="fas fa-download" />
+                            Download Resume
+                        </motion.a>
                     </motion.div>
                 )}
             </AnimatePresence>

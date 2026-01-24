@@ -31,29 +31,74 @@ function Hero() {
 
                         <motion.h1
                             className="hero-title"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.5 }}
+                            initial="hidden"
+                            animate="visible"
+                            variants={{
+                                hidden: { opacity: 0 },
+                                visible: {
+                                    opacity: 1,
+                                    transition: { staggerChildren: 0.05, delayChildren: 0.2 }
+                                }
+                            }}
                         >
-                            Hi, I'm <span className="gradient-text">Kaushik</span>
+                            {/* "Hi, I'm " split into characters */}
+                            {"Hi, I'm ".split('').map((char, index) => (
+                                <motion.span
+                                    key={index}
+                                    variants={{
+                                        hidden: { opacity: 0, y: 20 },
+                                        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                                    }}
+                                >
+                                    {char}
+                                </motion.span>
+                            ))}
+                            {/* Gradient Name */}
+                            <motion.span
+                                className="gradient-text"
+                                variants={{
+                                    hidden: { opacity: 0, scale: 0.8 },
+                                    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, delay: 0.8 } }
+                                }}
+                            >
+                                Kaushik
+                            </motion.span>
                         </motion.h1>
 
                         <motion.h2
                             className="hero-subtitle"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.6 }}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: 1 }}
                         >
-                            iOS Developer
+                            {/* Typing effect cursor style for iOS Developer */}
+                            <span className="typewriter-text">iOS Developer</span>
                         </motion.h2>
 
                         <motion.p
                             className="hero-description"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.7 }}
+                            initial="hidden"
+                            animate="visible"
+                            variants={{
+                                hidden: { opacity: 0 },
+                                visible: {
+                                    opacity: 1,
+                                    transition: { staggerChildren: 0.03, delayChildren: 1.2 }
+                                }
+                            }}
                         >
-                            Building high-quality iOS apps with Swift & SwiftUI
+                            {"Building high-quality iOS apps with Swift & SwiftUI".split(' ').map((word, index) => (
+                                <motion.span
+                                    key={index}
+                                    style={{ display: 'inline-block', marginRight: '5px' }}
+                                    variants={{
+                                        hidden: { opacity: 0, y: 10 },
+                                        visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+                                    }}
+                                >
+                                    {word}
+                                </motion.span>
+                            ))}
                         </motion.p>
 
                         <motion.div
