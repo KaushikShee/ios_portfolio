@@ -73,13 +73,38 @@ function Navbar() {
 
     // Prevent body scroll when mobile menu is open
     useEffect(() => {
+        const preventScroll = (e) => {
+            e.preventDefault()
+        }
+
         if (isMobileMenuOpen) {
             document.body.style.overflow = 'hidden'
+            document.documentElement.style.overflow = 'hidden'
+            document.body.style.position = 'fixed'
+            document.body.style.width = '100%'
+            document.body.style.top = `-${window.scrollY}px`
+            // Prevent touchmove on the body
+            document.body.addEventListener('touchmove', preventScroll, { passive: false })
         } else {
+            const scrollY = document.body.style.top
             document.body.style.overflow = ''
+            document.documentElement.style.overflow = ''
+            document.body.style.position = ''
+            document.body.style.width = ''
+            document.body.style.top = ''
+            // Restore scroll position
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY || '0') * -1)
+            }
+            document.body.removeEventListener('touchmove', preventScroll)
         }
         return () => {
             document.body.style.overflow = ''
+            document.documentElement.style.overflow = ''
+            document.body.style.position = ''
+            document.body.style.width = ''
+            document.body.style.top = ''
+            document.body.removeEventListener('touchmove', preventScroll)
         }
     }, [isMobileMenuOpen])
 

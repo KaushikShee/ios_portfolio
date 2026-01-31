@@ -1755,6 +1755,10 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    /* Dynamic viewport height for mobile browsers */
     background: var(--bg-primary);
     z-index: 998;
     display: flex;
@@ -1762,6 +1766,11 @@ section {
     align-items: center;
     justify-content: center;
     padding: 80px 24px 24px;
+    overflow: hidden;
+    /* Prevent scrolling inside the menu */
+    -webkit-overflow-scrolling: touch;
+    touch-action: none;
+    /* Prevent touch scrolling */
 }
 
 .mobile-menu a {
