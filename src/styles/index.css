@@ -960,35 +960,185 @@ section {
     display: block;
 }
 
-.code-input {
+/* Code Editor Wrapper for Syntax Highlighting */
+.code-editor-wrapper {
+    position: relative;
     flex: 1;
+    min-height: 300px;
+}
+
+.code-highlight,
+.code-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     padding: 16px;
-    background: #1e1e2e;
+    margin: 0;
     border: none;
-    color: #e6e6e6;
     font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
     font-size: 0.85rem;
     line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.code-highlight {
+    background: #1e1e2e;
+    color: #e6e6e6;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.code-input {
+    background: transparent;
+    color: transparent;
+    caret-color: #e6e6e6;
     resize: none;
     outline: none;
-    overflow-y: auto;
+    z-index: 2;
+    -webkit-text-fill-color: transparent;
 }
 
 .code-input::placeholder {
     color: var(--text-muted);
+    -webkit-text-fill-color: var(--text-muted);
 }
 
-.code-input::-webkit-scrollbar {
+.code-input::-webkit-scrollbar,
+.code-highlight::-webkit-scrollbar {
     width: 8px;
 }
 
-.code-input::-webkit-scrollbar-track {
+.code-input::-webkit-scrollbar-track,
+.code-highlight::-webkit-scrollbar-track {
     background: #252532;
 }
 
-.code-input::-webkit-scrollbar-thumb {
+.code-input::-webkit-scrollbar-thumb,
+.code-highlight::-webkit-scrollbar-thumb {
     background: #3d3d4d;
     border-radius: 4px;
+}
+
+/* Swift Syntax Highlighting - Xcode Dark Theme */
+.syntax-keyword {
+    color: #ff79c6;
+    /* Pink - keywords like let, var, for, if */
+}
+
+.syntax-string {
+    color: #fc5d5d;
+    /* Red - string literals */
+}
+
+.syntax-number {
+    color: #d4a656;
+    /* Yellow/Orange - numbers */
+}
+
+.syntax-comment {
+    color: #6a9955;
+    /* Green - comments */
+}
+
+.syntax-type {
+    color: #6dd5c3;
+    /* Cyan/Teal - types like Int, String, Array */
+}
+
+.syntax-function {
+    color: #6eb5ff;
+    /* Blue - function calls like print() */
+}
+
+.syntax-property {
+    color: #b48ead;
+    /* Purple - properties after dot */
+}
+
+/* Autocomplete Dropdown */
+.autocomplete-dropdown {
+    position: absolute;
+    z-index: 100;
+    background: #1e1e2e;
+    border: 1px solid #3d3d4d;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    max-height: 250px;
+    overflow-y: auto;
+    min-width: 280px;
+    max-width: 350px;
+}
+
+.autocomplete-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item.selected {
+    background: #2d2d3d;
+}
+
+.autocomplete-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.autocomplete-icon.keyword {
+    background: linear-gradient(135deg, #ff79c6, #ff92d0);
+    color: #1e1e2e;
+}
+
+.autocomplete-icon.type {
+    background: linear-gradient(135deg, #6dd5c3, #8be9d9);
+    color: #1e1e2e;
+}
+
+.autocomplete-icon.function {
+    background: linear-gradient(135deg, #6eb5ff, #8ec5ff);
+    color: #1e1e2e;
+}
+
+.autocomplete-icon.property {
+    background: linear-gradient(135deg, #b48ead, #c9a3c3);
+    color: #1e1e2e;
+}
+
+.autocomplete-icon.variable {
+    background: linear-gradient(135deg, #d4a656, #e6b866);
+    color: #1e1e2e;
+}
+
+.autocomplete-label {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    color: #e6e6e6;
+    flex-shrink: 0;
+}
+
+.autocomplete-detail {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-left: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .playground-controls {
