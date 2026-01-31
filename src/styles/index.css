@@ -854,6 +854,232 @@ section {
     font-size: 0.9rem;
 }
 
+/* ===== Swift Playground Section ===== */
+.playground {
+    background: var(--bg-primary);
+}
+
+.playground-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #1e1e2e;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.playground-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #2d2d3a;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.window-controls .control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.window-controls .close {
+    background: #ff5f57;
+}
+
+.window-controls .minimize {
+    background: #febc2e;
+}
+
+.window-controls .maximize {
+    background: #28c840;
+}
+
+.playground-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.playground-title i {
+    color: #f05138;
+    font-size: 1.1rem;
+}
+
+.playground-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.playground-editor {
+    display: flex;
+    min-height: 300px;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.line-numbers {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 12px;
+    background: #252532;
+    color: var(--text-muted);
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    text-align: right;
+    user-select: none;
+    min-width: 50px;
+    overflow-y: auto;
+}
+
+.line-numbers span {
+    display: block;
+}
+
+.code-input {
+    flex: 1;
+    padding: 16px;
+    background: #1e1e2e;
+    border: none;
+    color: #e6e6e6;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    resize: none;
+    outline: none;
+    overflow-y: auto;
+}
+
+.code-input::placeholder {
+    color: var(--text-muted);
+}
+
+.code-input::-webkit-scrollbar {
+    width: 8px;
+}
+
+.code-input::-webkit-scrollbar-track {
+    background: #252532;
+}
+
+.code-input::-webkit-scrollbar-thumb {
+    background: #3d3d4d;
+    border-radius: 4px;
+}
+
+.playground-controls {
+    padding: 16px;
+    background: #252532;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+}
+
+.run-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #f05138, #ff6b4a);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(240, 81, 56, 0.3);
+}
+
+.run-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 81, 56, 0.4);
+}
+
+.run-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.run-btn.running {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.playground-output {
+    border-top: 1px solid var(--border-color);
+}
+
+.output-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #252532;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.output-header i {
+    color: var(--accent-green);
+}
+
+.output-content {
+    padding: 16px;
+    min-height: 100px;
+    max-height: 200px;
+    overflow-y: auto;
+    background: #1a1a24;
+}
+
+.output-content pre {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.success-output {
+    color: #4ade80;
+}
+
+.error-output {
+    color: #f87171;
+}
+
+.placeholder-output {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
 /* ===== Experience Section ===== */
 .experience-timeline {
     position: relative;
@@ -1478,6 +1704,40 @@ section {
 
     .experience-list li {
         justify-content: center;
+    }
+
+    .playground .container {
+        text-align: center;
+    }
+
+    .playground-header {
+        padding: 10px 12px;
+    }
+
+    .playground-title {
+        font-size: 0.8rem;
+    }
+
+    .playground-editor {
+        min-height: 250px;
+    }
+
+    .code-input {
+        font-size: 0.8rem;
+    }
+
+    .line-numbers {
+        font-size: 0.8rem;
+        min-width: 40px;
+        padding: 16px 8px;
+    }
+
+    .output-content {
+        text-align: left;
+    }
+
+    .output-content pre {
+        text-align: left;
     }
 
     .skills-grid {
