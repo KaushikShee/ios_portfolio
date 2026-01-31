@@ -1890,6 +1890,48 @@ section {
         text-align: left;
     }
 
+    /* Hide autocomplete on small screens for better UX */
+    .autocomplete-dropdown {
+        display: none;
+    }
+}
+
+/* Mobile-specific fixes for code editor - disable overlay for smooth typing */
+@media (max-width: 768px) {
+
+    /* Hide the syntax highlight overlay on mobile */
+    .code-highlight {
+        display: none !important;
+    }
+
+    /* Make textarea visible with proper styling */
+    .code-input {
+        color: #e6e6e6 !important;
+        -webkit-text-fill-color: #e6e6e6 !important;
+        background: #1e1e2e !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+    }
+
+    .code-editor-wrapper {
+        min-height: 200px;
+    }
+
+    /* Disable autocomplete on mobile for better performance */
+    .autocomplete-dropdown {
+        display: none !important;
+    }
+
+    .playground-editor {
+        min-height: 200px;
+        max-height: 300px;
+    }
+
+    .line-numbers {
+        min-width: 35px;
+        padding: 12px 6px;
+    }
+
     .skills-grid {
         grid-template-columns: repeat(3, 1fr);
     }
