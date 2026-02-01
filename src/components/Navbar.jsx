@@ -110,13 +110,18 @@ function Navbar() {
 
     // Smooth scroll to section
     const scrollToSection = (sectionId) => {
-        const section = document.getElementById(sectionId)
-        if (section) {
-            const offset = 100
-            const top = section.offsetTop - offset
-            window.scrollTo({ top, behavior: 'smooth' })
-        }
+        // Close mobile menu first
         setIsMobileMenuOpen(false)
+
+        // Wait for body position to be restored, then scroll
+        setTimeout(() => {
+            const section = document.getElementById(sectionId)
+            if (section) {
+                const offset = 100
+                const top = section.offsetTop - offset
+                window.scrollTo({ top, behavior: 'smooth' })
+            }
+        }, 100) // Small delay to allow body to unfixed
     }
 
     return (

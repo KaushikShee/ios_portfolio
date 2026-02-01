@@ -1858,11 +1858,19 @@ section {
     }
 
     .experience-list {
-        align-items: center;
+        align-items: flex-start;
+        padding: 0 16px;
     }
 
     .experience-list li {
-        justify-content: center;
+        justify-content: flex-start;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .experience-list li i {
+        margin-top: 4px;
+        flex-shrink: 0;
     }
 
     .playground .container {
