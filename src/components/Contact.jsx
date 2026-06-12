@@ -74,7 +74,7 @@ function Contact() {
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5 }}
                 >
-                    Let's Work Together
+                    Let's Work <span className="accent">Together</span>
                 </motion.h2>
 
                 <motion.p

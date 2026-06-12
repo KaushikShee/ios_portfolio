@@ -85,7 +85,7 @@ function Skills() {
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                    Technologies I work with
+                    Technologies I <span className="accent">work with</span>
                 </motion.h2>
 
                 <motion.p

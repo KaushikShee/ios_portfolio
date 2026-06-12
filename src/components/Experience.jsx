@@ -51,7 +51,7 @@ function Experience() {
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                    Work Experience
+                    Work <span className="accent">Experience</span>
                 </motion.h2>
 
                 <motion.p

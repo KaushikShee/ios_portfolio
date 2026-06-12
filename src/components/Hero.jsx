@@ -1,4 +1,48 @@
 import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+
+const roles = ['iOS Developer', 'Swift Engineer', 'SwiftUI Craftsman', 'App Architect', 'Problem Solver']
+const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/{}[]*#@%'
+
+function RoleScramble() {
+    const [text, setText] = useState(roles[0])
+    const scramRef = useRef(null)
+
+    useEffect(() => {
+        let idx = 0
+
+        const scrambleTo = (target) => {
+            const len = target.length
+            let frame = 0
+            clearInterval(scramRef.current)
+            scramRef.current = setInterval(() => {
+                let out = ''
+                for (let i = 0; i < len; i++) {
+                    if (i < frame / 1.6) out += target[i]
+                    else out += scrambleChars[Math.floor(Math.random() * scrambleChars.length)]
+                }
+                setText(out)
+                frame++
+                if (frame > len * 1.6) {
+                    clearInterval(scramRef.current)
+                    setText(target)
+                }
+            }, 32)
+        }
+
+        const cycle = setInterval(() => {
+            idx = (idx + 1) % roles.length
+            scrambleTo(roles[idx])
+        }, 2800)
+
+        return () => {
+            clearInterval(cycle)
+            clearInterval(scramRef.current)
+        }
+    }, [])
+
+    return <span className="typewriter-text">{text}</span>
+}
 
 function Hero() {
     const scrollToAbout = () => {
@@ -71,8 +115,8 @@ function Hero() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5, delay: 1 }}
                         >
-                            {/* Typing effect cursor style for iOS Developer */}
-                            <span className="typewriter-text">iOS Developer</span>
+                            {/* Scrambling role text */}
+                            <RoleScramble />
                         </motion.h2>
 
                         <motion.p
@@ -87,7 +131,7 @@ function Hero() {
                                 }
                             }}
                         >
-                            {"Building high-quality iOS apps with Swift & SwiftUI".split(' ').map((word, index) => (
+                            {"Building high-quality iOS apps with Swift & SwiftUI — crafting fast, polished experiences from the first tap to the last.".split(' ').map((word, index) => (
                                 <motion.span
                                     key={index}
                                     style={{ display: 'inline-block', marginRight: '5px' }}
