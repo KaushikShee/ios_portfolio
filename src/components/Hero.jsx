@@ -143,7 +143,7 @@ function Hero() {
                         <div className="profile-wrapper">
                             <div className="profile-ring" />
                             <div className="profile-photo">
-                                <img src="/user.jpg" alt="Kaushik Shee" />
+                                <img src="/picc.png" alt="Kaushik Shee" />
                             </div>
 
                             <motion.div
