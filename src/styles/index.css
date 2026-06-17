@@ -58,6 +58,21 @@ body {
   color: var(--p2);
 }
 
+/* Prevent selecting / dragging / saving any image across the site */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -104,7 +119,6 @@ textarea::placeholder {
 .education-card,
 .contact-form,
 .mobile-menu,
-.theme-switcher,
 .tag-icon,
 .floating-badge {
   background: rgba(255, 255, 255, .55);
@@ -1419,62 +1433,6 @@ section {
 }
 
 /* ============================================
-   THEME SWITCHER
-   ============================================ */
-.theme-switcher {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 1100;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 16px;
-  border-radius: 9999px;
-}
-
-.theme-switcher .theme-label {
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.theme-swatch {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
-}
-
-.theme-swatch:hover {
-  transform: scale(1.18);
-}
-
-.theme-swatch.active {
-  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px currentColor;
-}
-
-.theme-swatch.citrus {
-  background: linear-gradient(135deg, #FF5C39, #1F4D52);
-  color: #FF5C39;
-}
-
-.theme-swatch.orchid {
-  background: linear-gradient(135deg, #7C3AED, #EC4899);
-  color: #7C3AED;
-}
-
-.theme-swatch.lagoon {
-  background: linear-gradient(135deg, #0E9488, #84CC16);
-  color: #0E9488;
-}
-
-/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 920px) {
@@ -1530,11 +1488,5 @@ section {
 
   .experience-header {
     flex-direction: column;
-  }
-
-  .theme-switcher {
-    right: 14px;
-    bottom: 14px;
-    padding: 9px 13px;
   }
 }

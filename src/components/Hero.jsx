@@ -187,7 +187,7 @@ function Hero() {
                         <div className="profile-wrapper">
                             <div className="profile-ring" />
                             <div className="profile-photo">
-                                <img src="/picc.png" alt="Kaushik Shee" />
+                                <img src="/picc.png" alt="Kaushik Shee" draggable="false" />
                             </div>
 
                             <motion.div
@@ -203,7 +203,7 @@ function Hero() {
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
                             >
-                                <img src="/swift-icon.png" alt="Swift" className="swift-icon" />
+                                <img src="/swift-icon.png" alt="Swift" className="swift-icon" draggable="false" />
                             </motion.div>
 
                             <motion.div
@@ -211,7 +211,7 @@ function Hero() {
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                             >
-                                <img src="/xcode-icon.png" alt="Xcode" className="xcode-icon" />
+                                <img src="/xcode-icon.png" alt="Xcode" className="xcode-icon" draggable="false" />
                             </motion.div>
                         </div>
                     </motion.div>
