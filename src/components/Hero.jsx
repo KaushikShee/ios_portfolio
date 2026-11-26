@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import HeroColorTrail from './HeroColorTrail'
 
 const roles = ['iOS Developer', 'Swift Engineer', 'SwiftUI Craftsman', 'App Architect', 'Problem Solver']
 const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/{}[]*#@%'
@@ -54,6 +55,7 @@ function Hero() {
 
     return (
         <section id="home" className="hero">
+            <HeroColorTrail />
             <div className="hero-container">
                 <div className="hero-content">
                     {/* Hero Text */}

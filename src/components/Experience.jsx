@@ -3,8 +3,10 @@ import { useRef } from 'react'
 
 const experienceItems = [
     'Worked on ecommerce-based iOS projects using UIKit',
-    'Implemented complex features and workflows',
-    'Multi-language app support',
+    'Contributed as a React Native Developer to Bateel’s iOS and Android commerce app (work covered: Jul–Nov 2026)',
+    'Built Bateel’s three-step gift builder, product-detail interactions, and Magento-configured address forms',
+    'Implemented cart safeguards and order experiences, and improved English/Arabic layouts and country/currency behavior',
+    'Resolved QA-reported defects with Jest tests and on-device verification across iOS and Android',
     'Login systems using Firebase',
     'Push notification integration',
 ]
@@ -60,7 +62,7 @@ function Experience() {
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                    Professional journey in iOS development
+                    Professional experience across native iOS and React Native development
                 </motion.p>
 
                 <div className="experience-timeline">

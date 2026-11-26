@@ -4,7 +4,7 @@ import { useRef } from 'react'
 
 const aboutCards = [
     { icon: 'fas fa-mobile-alt', title: 'iOS Development', desc: 'Native apps with Swift & SwiftUI' },
-    { icon: 'fas fa-code', title: 'Clean Code', desc: 'Following Apple guidelines & best practices' },
+    { icon: 'fab fa-react', title: 'React Native', desc: 'Commerce apps for iOS & Android' },
     { icon: 'fas fa-bolt', title: 'Performance', desc: 'Optimized & responsive applications' },
     { icon: 'fas fa-users', title: 'Collaboration', desc: 'Agile teams & version control' },
 ]
@@ -54,17 +54,21 @@ function About() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         <h2 className="about-title">
-                            Crafting iOS experiences<br />
+                            Crafting mobile experiences<br />
                             <span className="text-muted">that users love</span>
                         </h2>
                         <p className="about-description">
-                            Passionate and detail-oriented iOS Developer with hands-on experience building, testing, and deploying iOS applications using Swift and SwiftUI. Proficient in developing user-friendly interfaces, integrating RESTful APIs, managing app lifecycle, and working with Apple frameworks such as UIKit, AVFoundation, CoreData, and WebKit. Experienced in version control (Git), debugging, and collaborating in Agile teams. Eager to contribute to high-quality mobile products and continuously learn emerging iOS technologies.
+                            I build native iOS applications with Swift, SwiftUI, and UIKit, alongside cross-platform experiences with React Native and TypeScript. My work spans user interfaces, API integration, app lifecycle, testing, and collaboration in Agile teams.
+                        </p>
+                        <p className="about-description">
+                            My recent work at Codilar includes Bateel’s iOS and Android commerce app, where I contributed to custom gifting, product discovery, backend-driven address forms, checkout and order experiences, and English/Arabic localization.
                         </p>
                         <div className="about-tags icon-tags">
                             {[
                                 { icon: 'fab fa-swift', name: 'Swift' },
                                 { icon: 'fab fa-apple', name: 'UIKit' },
                                 { icon: 'fas fa-layer-group', name: 'SwiftUI' },
+                                { icon: 'fab fa-react', name: 'React Native' },
                                 { icon: 'fas fa-sync-alt', name: 'Agile' }
                             ].map((item, index) => (
                                 <motion.div

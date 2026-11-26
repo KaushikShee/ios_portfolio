@@ -112,8 +112,8 @@ textarea::placeholder {
 /* ---------- Glass utility ---------- */
 .glass,
 .about-card,
-.skill-card,
-.stat-card,
+.skill-group,
+.bateel-feature,
 .experience-card,
 .project-card,
 .education-card,
@@ -512,6 +512,24 @@ section {
   display: flex;
   align-items: center;
   padding: 140px 32px 80px;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-color-trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(3px);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .hero-color-trail { display: none; }
 }
 
 .hero-container {
@@ -876,79 +894,59 @@ section {
 /* ============================================
    SKILLS
    ============================================ */
-.skills-grid {
+.skill-groups {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
-  margin-top: 54px;
+  text-align: left;
 }
 
-.skill-card {
-  padding: 30px 16px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
+.skill-group {
+  padding: 28px;
+  border-radius: 22px;
+  transition: border-color .25s ease, box-shadow .25s ease;
 }
 
-.skill-card span {
-  font-weight: 700;
-  font-size: 16px;
-  color: var(--ink);
-}
-
-.skill-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-}
-
-.skill-card.blue-accent .skill-icon { background: rgba(44, 74, 117, .14); color: var(--navy); }
-.skill-card.orange-accent .skill-icon { background: rgba(var(--p-rgb), .14); color: var(--p); }
-.skill-card.teal-accent .skill-icon { background: rgba(var(--p2-rgb), .16); color: var(--p2); }
-.skill-card.purple-accent .skill-icon { background: rgba(124, 58, 237, .14); color: var(--violet); }
-.skill-card.green-accent .skill-icon { background: rgba(63, 107, 74, .16); color: var(--green); }
-
-.skill-card:first-child .skill-icon {
-  background: var(--ink);
-  color: #fff;
-}
-
-/* Stats */
-.stats-grid {
+.skill-group-heading { display: flex; align-items: center; gap: 16px; }
+.skill-group-heading h3 { font-size: 19px; letter-spacing: -.025em; }
+.skill-group-heading p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+.skill-group-icon {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 18px;
-  margin-top: 24px;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: rgba(var(--p2-rgb), .09);
+  color: var(--p2);
+  font-size: 21px;
 }
-
-.stat-card {
-  padding: 38px 20px;
-  border-radius: 20px;
-}
-
-.stat-number {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 1;
-}
-
-.stat-card:nth-child(1) .stat-number { color: var(--p); }
-.stat-card:nth-child(2) .stat-number { color: var(--p2); }
-.stat-card:nth-child(3) .stat-number { color: var(--green); }
-
-.stat-card p {
-  margin-top: 8px;
-  color: var(--muted);
+.skill-group:first-child .skill-group-icon { color: var(--p); background: rgba(var(--p-rgb), .1); }
+.skill-chips, .feature-tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+.skill-chips { margin-top: 24px; }
+.skill-chips li {
+  padding: 7px 12px;
+  border: 1px solid rgba(21, 23, 26, .08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .45);
+  font-size: 13px;
   font-weight: 600;
-  font-size: 15px;
+  color: var(--ink-soft);
 }
+
+.skills-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 32px;
+  padding: 22px 0;
+  border-top: 1px solid rgba(21, 23, 26, .1);
+  border-bottom: 1px solid rgba(21, 23, 26, .1);
+}
+.skills-stat { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.skills-stat + .skills-stat { border-left: 1px solid rgba(21, 23, 26, .1); }
+.skills-stat > span:last-child { font-size: 13px; color: var(--muted); }
+.skills-stat-number { font-family: 'Instrument Serif', Georgia, serif; font-size: 36px; color: var(--p2); line-height: 1; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 
 /* ============================================
    EXPERIENCE
@@ -1068,7 +1066,7 @@ section {
    ============================================ */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
   text-align: left;
 }
@@ -1147,6 +1145,101 @@ section {
 
 .project-link i {
   font-size: 12px;
+}
+
+.bateel-feature {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  border-radius: 28px;
+  overflow: hidden;
+  text-align: left;
+  scroll-margin-top: 110px;
+}
+.bateel-overview {
+  padding: clamp(24px, 3.5vw, 44px);
+  background: linear-gradient(145deg, rgba(var(--p-rgb), .08), rgba(var(--p2-rgb), .04));
+  border-right: 1px solid rgba(21, 23, 26, .07);
+}
+.feature-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--p2); }
+.feature-eyebrow > span { width: 6px; height: 6px; border-radius: 50%; background: var(--p); }
+.bateel-overview h3 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(58px, 6vw, 80px); letter-spacing: -.04em; line-height: 1.05; margin: 26px 0 10px; }
+.bateel-overview h3 .accent { color: var(--p); }
+.bateel-tagline { font-size: 18px; font-weight: 600; letter-spacing: -.025em; }
+.bateel-intro { font-size: 14px; line-height: 1.8; color: var(--muted); margin-top: 16px; max-width: 46ch; }
+.bateel-facts { display: flex; flex-wrap: wrap; gap: 20px 32px; margin: 26px 0; }
+.bateel-facts dt { font-size: 10px; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); margin-bottom: 6px; }
+.bateel-facts dd { font-size: 12px; font-weight: 700; }
+.feature-tags li { font-size: 11px; font-weight: 600; color: var(--p2); background: rgba(var(--p2-rgb), .07); border-radius: 6px; padding: 6px 9px; }
+.bateel-tools { margin-top: 20px; font-size: 12px; color: var(--ink-soft); }
+.bateel-tools summary { width: fit-content; padding: 4px 0; cursor: pointer; }
+.bateel-tools p { margin-top: 12px; color: var(--muted); line-height: 1.8; }
+.bateel-work { padding: clamp(24px, 3vw, 36px); min-width: 0; }
+.contribution-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 4px 0 20px; }
+.contribution-heading h4 { font-size: 13px; font-weight: 700; }
+.contribution-heading > span { font-size: 10px; color: var(--muted); letter-spacing: .03em; }
+.contribution-item { border-top: 1px solid rgba(21, 23, 26, .09); }
+.contribution-item:last-child { border-bottom: 1px solid rgba(21, 23, 26, .09); }
+.contribution-item h5 { font: inherit; }
+.contribution-item button {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 19px 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+.contribution-number { color: var(--muted); font-size: 10px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.contribution-toggle { display: grid; place-items: center; border-radius: 50%; width: 24px; height: 24px; background: rgba(21, 23, 26, .04); font-size: 18px; font-weight: 400; transition: background .2s ease; }
+.is-open button { color: var(--p2); }
+.is-open .contribution-toggle { background: rgba(var(--p2-rgb), .1); }
+.contribution-panel { overflow: hidden; }
+.contribution-panel p { padding: 0 24px 20px 34px; font-size: 13px; line-height: 1.85; color: var(--muted); max-width: 60ch; }
+.other-projects-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 42px 0 20px; text-align: left; }
+.other-projects-heading h3 { font-size: 15px; font-weight: 600; }
+.other-projects-heading span { color: var(--muted); font-size: 12px; }
+.project-private { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 13px; }
+.project-link { transition: color .2s ease; }
+.bateel-feature button:focus-visible, .bateel-tools summary:focus-visible, .projects .project-link:focus-visible {
+  outline: 2px solid var(--p2);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@media (hover: hover) {
+  .skill-group:hover { border-color: rgba(var(--p2-rgb), .22); box-shadow: 0 14px 32px rgba(21, 23, 26, .08); }
+  .contribution-item button:hover, .project-link:hover { color: var(--p2); }
+}
+@media (max-width: 980px) {
+  .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .projects-grid .project-card:last-child { grid-column: 1 / -1; }
+  .bateel-feature { grid-template-columns: 1fr; }
+  .bateel-overview { border-right: 0; border-bottom: 1px solid rgba(21, 23, 26, .07); }
+  .bateel-intro { max-width: 65ch; }
+}
+@media (max-width: 600px) {
+  .skill-groups, .projects-grid { grid-template-columns: minmax(0, 1fr); }
+  .skill-group { padding: 22px; }
+  .skill-group-heading { gap: 12px; }
+  .skill-group-heading h3 { font-size: 17px; }
+  .skill-group-heading p { font-size: 12px; }
+  .skills-stat { flex-direction: column; gap: 8px; }
+  .skills-stat > span:last-child { font-size: 10px; }
+  .skills-stat-number { font-size: 30px; }
+  .other-projects-heading span { display: none; }
+  .bateel-overview, .bateel-work { padding: 24px; }
+  .contribution-item button { gap: 8px; font-size: 13px; }
+  .contribution-panel p { padding-left: 30px; padding-right: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skill-group, .contribution-item button, .contribution-toggle, .project-link { transition: none; }
 }
 
 /* ============================================
